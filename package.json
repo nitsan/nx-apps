@@ -2,14 +2,52 @@
   "name": "@nx-apps/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx run-many --target=build --all",
+    "test": "nx run-many --target=test --all",
+    "lint": "nx run-many --target=lint --all"
+  },
   "private": true,
-  "dependencies": {},
   "devDependencies": {
+    "@nx/esbuild": "22.3.3",
+    "@nx/eslint": "^22.3.3",
+    "@nx/eslint-plugin": "^22.3.3",
     "@nx/js": "22.3.3",
-    "nx": "22.3.3"
+    "@nx/vitest": "22.3.3",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "^1.15.7",
+    "@swc/helpers": "^0.5.18",
+    "@types/node": "^22.19.3",
+    "@typescript-eslint/eslint-plugin": "^7.16.0",
+    "@typescript-eslint/parser": "^7.16.0",
+    "@vitest/coverage-v8": "^4.0.0",
+    "esbuild": "^0.19.2",
+    "eslint": "~8.57.0",
+    "eslint-config-prettier": "^10.0.0",
+    "jsonc-eslint-parser": "^2.1.0",
+    "nx": "22.3.3",
+    "prettier": "~3.6.2",
+    "tslib": "^2.3.0",
+    "typescript": "~5.9.2",
+    "verdaccio": "^6.0.5",
+    "vite": "^7.0.0",
+    "vitest": "^4.0.8"
   },
   "workspaces": [
-    "packages/*"
-  ]
+    "packages/*",
+    "my-package1"
+  ],
+  "nx": {
+    "includedScripts": [],
+    "targets": {
+      "local-registry": {
+        "executor": "@nx/js:verdaccio",
+        "options": {
+          "port": 4873,
+          "config": ".verdaccio/config.yml",
+          "storage": "tmp/local-registry/storage"
+        }
+      }
+    }
+  }
 }
