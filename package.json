@@ -27,6 +27,7 @@
     "jsonc-eslint-parser": "^2.1.0",
     "nx": "22.3.3",
     "prettier": "~3.6.2",
+    "semantic-release": "^25.0.2",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
     "verdaccio": "^6.0.5",
